@@ -373,7 +373,7 @@ impl TogglerState {
 
         let mut cmd = CommandToRun::new_with_args(&config.cmd, config.args.clone());
         cmd.cwd = config.cwd.as_ref().map(PathBuf::from);
-        open_command_pane(cmd, cmd_context);
+        open_command_pane_near_plugin(cmd, cmd_context);
     }
 
     fn start_closing_pane(
