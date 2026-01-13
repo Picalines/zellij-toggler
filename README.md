@@ -30,17 +30,17 @@ The `pane_id` field is a client-defined identifier (not a native Zellij pane ID)
 ```bash
 PLUGIN="file:$(pwd)/target/wasm32-wasip1/release/zellij-toggler.wasm"
 
-# Open pane with htop
-echo '{"pane_id":"my_htop","cmd":"htop"}' | zellij pipe --name open --plugin "$PLUGIN"
+# Open pane with bash
+echo '{"pane_id":"my_pane","cmd":"bash"}' | zellij pipe --name toggler::open --plugin "$PLUGIN"
 
 # Open pane with custom args and cwd
-echo '{"pane_id":"my_pane","cmd":"python","args":["-m","http.server"],"cwd":"/tmp"}' | zellij pipe --name open --plugin "$PLUGIN"
+echo '{"pane_id":"my_pane","cmd":"python","args":["-m","http.server"],"cwd":"/tmp"}' | zellij pipe --name toggler::open --plugin "$PLUGIN"
 
 # Close pane
-echo '{"pane_id":"my_htop"}' | zellij pipe --name close --plugin "$PLUGIN"
+echo '{"pane_id":"my_pane"}' | zellij pipe --name toggler::close --plugin "$PLUGIN"
 
 # Toggle pane (requires cmd for re-open, ignored on close)
-echo '{"pane_id":"my_htop", "cmd":"htop"}' | zellij pipe --name toggle --plugin "$PLUGIN"
+echo '{"pane_id":"my_pane", "cmd":"htop"}' | zellij pipe --name toggler::toggle --plugin "$PLUGIN"
 ```
 
 ### Responses
